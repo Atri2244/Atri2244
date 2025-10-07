@@ -1,0 +1,182 @@
+CHAPTER 1 – DATA REPRESENTATION
+1.1 Number Systems
+Binary (Base 2)
+• Uses only 0 and 1.
+• Each digit in binary is called a bit.
+• Binary is used inside computers because hardware (transistors) can only represent two states: ON (1) or OFF (0).
+• Example:
+• Binary: 1011₂
+• Decimal equivalent: 1×8+0×4+1×2+1×1=111×8 + 0×4 + 1×2 + 1×1 = 111×8+0×4+1×2+1×1=11
+Decimal (Base 10)
+• The number system humans use every day.
+• Uses digits 0–9.
+• Each place represents a power of 10.
+Hexadecimal (Base 16)
+• Uses 16 symbols: 0–9 and A–F (where A=10, B=11, ..., F=15).
+• Easier for humans to read long binary numbers.
+• Example:
+• Binary 11111111 → Hex FF
+1.2 Conversions Between Number Systems
+Binary → Decimal: Multiply each bit by 2ⁿ and add.
+Decimal → Binary: Divide by 2, note remainders (read bottom-up).
+Binary → Hexadecimal: Group 4 bits → convert each group.
+1.3 Binary Arithmetic
+OperationExampleExplanation0 + 00No carry0 + 11No carry1 + 01No carry1 + 110Write 0, carry 1
+Example:
+0101 (5) + 0011 (3) = 1000 (8) 
+Overflow: Happens when result is too large for the available bits (e.g., 8-bit cannot hold 9th bit).
+1.4 Representing Negative Numbers
+Sign and Magnitude
+• First bit = sign (0 = positive, 1 = negative)
+• Example (8-bit):
++5 = 00000101
+-5 = 10000101
+❌ Problem: two zeros (00000000 and 10000000)
+Two’s Complement (used in computers)
+Steps:
+• Write binary for positive number.
+• Invert all bits.
+• Add 1.
+Example:
++5 = 00000101
+Invert → 11111010
+Add 1 → 11111011 = -5
+Range for 8-bit: –128 to +127
+1.5 Binary Shifts
+Used for multiplying or dividing by powers of 2.
+• Left shift by 1: ×2
+• Right shift by 1: ÷2
+1.6 Character Sets
+Characters are stored as binary codes.
+Character SetBitsCharactersNotesASCII7128English letters, digits, symbolsExtended ASCII8256Extra symbolsUnicode16+>65,000Supports all languages
+1.7 Images
+• Image made up of pixels (picture elements).
+• Each pixel = binary value representing colour.
+• Resolution: Number of pixels in width × height.
+• Colour Depth: Number of bits per pixel.
+• 1 bit → 2 colours
+• 8 bits → 256 colours
+• 24 bits → 16 million colours
+File size (bits) = width × height × colour depth
+1.8 Sound Representation
+• Sound is an analogue wave → converted to digital by ADC (Analogue-to-Digital Converter).
+Sampling: Measure amplitude at fixed time intervals.
+Sample rate: number of samples per second (Hz).
+Bit depth: number of bits used per sample.
+File size = sample rate × bit depth × duration
+Higher rate or depth = better quality but larger file.
+1.9 Data Compression
+Reduces file size.
+• Lossless: No data lost (text, software).
+• Lossy: Some data removed (audio, image).
+💻 CHAPTER 2 – COMMUNICATION AND INTERNET TECHNOLOGIES
+2.1 Data Transmission
+Data sent between devices using signals.
+Serial Transmission
+• Bits sent one after another on one wire.
+• Slower, but reliable over long distances.
+• Example: USB, RS232.
+Parallel Transmission
+• Multiple bits sent at once (each bit has its own wire).
+• Faster but can cause signal skew.
+• Used inside computer.
+2.2 Transmission Direction
+TypeDescriptionExampleSimplexOne directionPrinter outputHalf-duplexBoth ways, but one at a timeWalkie-talkieFull-duplexBoth directions at oncePhone call
+2.3 Transmission Errors
+Errors can occur due to noise or interference.
+Error Detection Methods:
+• Parity Bit:
+• Even or Odd parity.
+• Detects single-bit errors.
+• Checksum:
+• Sum of data values sent with message.
+• ARQ (Automatic Repeat reQuest):
+• If error detected, receiver asks to resend.
+2.4 Network Topologies
+TypeDescriptionAdvantagesDisadvantagesBusAll devices share one cableCheapCable failure affects allStarDevices connected to central hubReliableExpensiveRingDevices connected in circlePredictable data flowFailure affects all
+2.5 Network Types
+• LAN: Local Area Network (small area, e.g., school).
+• MAN: Metropolitan Area Network (city).
+• WAN: Wide Area Network (large area, e.g., internet).
+2.6 Internet and Protocols
+Protocol: Set of rules for communication.
+ProtocolPurposeHTTPTransfer web pagesHTTPSSecure web transferFTPTransfer filesSMTPSend emailsIMAP / POP3Receive emailsTCP/IPInternet communication
+2.7 IP Addressing
+• IPv4: 32-bit (e.g., 192.168.1.1).
+• IPv6: 128-bit (e.g., 2001:db8::1).
+• Public IP: Used on the internet.
+• Private IP: Used inside LAN.
+2.8 MAC Address
+• Unique hardware address (48-bit) in NIC (Network Interface Card).
+• Written in hexadecimal: 00:1A:2B:3C:4D:5E.
+2.9 Encryption
+• Converts plain text into cipher text using a key.
+• Protects data from unauthorized access.
+⚙️ CHAPTER 3 – HARDWARE
+3.1 Computer Components
+Main hardware types:
+• Input Devices: Keyboard, Mouse, Scanner, Microphone.
+• Output Devices: Monitor, Printer, Speaker.
+• Storage Devices: Hard Disk, SSD, Flash drive.
+• Processing Device: CPU.
+3.2 CPU (Central Processing Unit)
+Main Components
+• ALU (Arithmetic Logic Unit): Performs maths and logic operations.
+• CU (Control Unit): Controls all operations using control signals.
+• Registers: Small, fast memory inside CPU.
+• PC (Program Counter): Holds address of next instruction.
+• CIR (Current Instruction Register): Holds current instruction.
+• MAR (Memory Address Register): Address of data to fetch/store.
+• MDR (Memory Data Register): Actual data being transferred.
+• Accumulator: Holds results from ALU.
+Fetch–Decode–Execute Cycle
+• Fetch: CU sends address from PC to memory, retrieves instruction.
+• Decode: CU interprets instruction.
+• Execute: ALU carries out operation.
+• PC updated to next instruction.
+3.3 Memory
+TypeVolatileDescriptionRAMYesTemporary data storageROMNoStores permanent data (BIOS)CacheYesVery fast memory near CPUVirtual MemoryYesPart of hard drive used when RAM is full
+3.4 Secondary Storage
+TypeExampleFeaturesMagneticHDDHigh capacity, slowerOpticalCD/DVDUses laser lightSolid-StateSSD, USBFast, durable, expensive
+3.5 Printers
+• Laser Printer: Uses toner + heat; fast and sharp text.
+• Inkjet Printer: Uses liquid ink; good for images.
+• 3D Printer: Builds objects layer by layer using materials.
+3.6 Sensors and Actuators
+• Sensor: Converts physical data → electrical signal (e.g., temperature, light).
+• Actuator: Converts electrical → physical movement (e.g., motor, valve).
+💡 CHAPTER 4 – SOFTWARE
+4.1 Types of Software
+• System Software: Runs the computer.
+• Operating system, utility programs, translators.
+• Application Software: Performs user tasks.
+• Word processor, spreadsheet, browser.
+• Custom / Bespoke Software: Designed for specific user.
+4.2 Operating System Functions
+• File Management: Organises files/folders.
+• Memory Management: Allocates memory to programs.
+• Security: Manages user access and passwords.
+• User Interface: CLI or GUI.
+• Device Management: Controls printers, keyboards, etc.
+• Processor Management: Handles multitasking and scheduling.
+4.3 Utility Software
+Helps maintain system performance.
+Examples:
+• Anti-virus – Removes malware.
+• File Compression – Reduces file size.
+• Backup Software – Saves copies of data.
+• Disk Defragmentation – Organises files for faster access.
+• Firewall – Protects against unauthorised access.
+4.4 Language Translators
+Used to convert program code to machine code.
+TypeDescriptionAssemblerConverts assembly → machine codeCompilerTranslates entire program, creates executable fileInterpreterTranslates line by line, good for debugging
+4.5 Programming Languages
+• High-Level: Uses English-like syntax (Python, C++, Java).
+• Low-Level: Closer to hardware (Assembly language).
+Advantages of High-Level:
+• Easier to read, portable, faster to code.
+4.6 Software Licensing
+• Freeware: Free to use but not modify.
+• Shareware: Trial version.
+• Open Source: Code available to edit and share.
+• Proprietary: Owned by company, must be purchased.
